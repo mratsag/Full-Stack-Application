@@ -1,4 +1,4 @@
-package entities;
+package com.project.SocialQuestApp.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
