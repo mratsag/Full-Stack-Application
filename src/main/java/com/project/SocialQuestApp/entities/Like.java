@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name= "comment")
+@Table(name= "likes")
 @Data
 public class Like {
 
