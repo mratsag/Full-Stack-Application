@@ -12,16 +12,17 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Like {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "post_id", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     Post post;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     User user;

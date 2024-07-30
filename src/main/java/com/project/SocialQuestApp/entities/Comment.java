@@ -1,4 +1,5 @@
 package com.project.SocialQuestApp.entities;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,26 +7,27 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name= "comment")
+@Table(name = "comment")
 @Data
 public class Comment {
+
     @Id
-    Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "post_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "post_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    Post post;
+    private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    User user;
+    private User user;
 
     @Lob
     @Column(columnDefinition = "text")
-    String text;
+    private String text;
 }

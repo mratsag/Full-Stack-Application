@@ -14,8 +14,8 @@ public class Post {
     @Id
     Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @Column(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     User user;
