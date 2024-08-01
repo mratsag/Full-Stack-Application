@@ -5,6 +5,7 @@ import com.project.SocialQuestApp.entities.Post;
 import com.project.SocialQuestApp.entities.User;
 import com.project.SocialQuestApp.repos.CommentRepository;
 import com.project.SocialQuestApp.requests.CommentCreateRequest;
+import com.project.SocialQuestApp.requests.CommentUpdateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,12 +57,18 @@ public class CommentService {
         return null;
     }
 
-    public Comment updateOneCommentById(Long commentId) {
+    public Comment updateOneCommentById(Long commentId, CommentUpdateRequest newCommentRequest) {
         Optional <Comment> comment = commentRepository.findById(commentId);
         if (comment.isPresent()){
             Comment commentToUpdate =  comment.get();
+            commentToUpdate.setText(newCommentRequest.getText());
+            return commentRepository.save(commentToUpdate);
         }else
             return null;
+    }
+
+    public void deleteOneCommentById(Long commentId) {
+        commentRepository.deleteById(commentId);
     }
 }
 
