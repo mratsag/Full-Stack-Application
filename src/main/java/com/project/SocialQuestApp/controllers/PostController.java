@@ -3,6 +3,7 @@ package com.project.SocialQuestApp.controllers;
 import com.project.SocialQuestApp.entities.Post;
 import com.project.SocialQuestApp.requests.PostCreateRequest;
 import com.project.SocialQuestApp.requests.PostUpdateRequest;
+import com.project.SocialQuestApp.responses.PostResponse;
 import com.project.SocialQuestApp.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +23,7 @@ public class PostController {
     }
 
     @GetMapping
-    public List<Post> getAllPosts(@RequestParam Optional<Long> userId) {
+    public List<PostResponse> getAllPosts(@RequestParam Optional<Long> userId) {
         return postService.getAllPosts(userId);
     }
 
