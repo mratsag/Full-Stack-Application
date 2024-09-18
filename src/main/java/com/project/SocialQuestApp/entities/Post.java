@@ -12,6 +12,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
@@ -20,7 +21,6 @@ public class Post {
     User user;
 
     String title;
-
     @Lob
     @Column(columnDefinition = "text")
     String text;
